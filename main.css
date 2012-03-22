@@ -12,3 +12,13 @@
 .AMIImgCurrent {
   border: 10px solid black;
 }
+
+.AMINext {
+  background-color:black;
+  border-radius:5px;
+}
+
+.AMIPrev {
+  background-color:black;
+  border-radius:5px;
+}

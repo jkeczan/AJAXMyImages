@@ -15,8 +15,8 @@ function animateNext () {
       
       jQuery.fn.AMIinit = function() {
         
-        var prev = $("#controls").append("<input id=\"prev\" name=\"prev\" type=\"button\" value=\"<<\" /> ");
-        var next = $("#controls").append("<input id=\"next\" name=\"next\" type=\"button\" value=\">>\" /> ");
+        var prev = $("#controls").append("<input id=\"prev\" name=\"prev\" class=\"AMINext\" type=\"button\" value=\"<<\" /> ");
+        var next = $("#controls").append("<input id=\"next\" name=\"next\" class=\"AMIPrev\" type=\"button\" value=\">>\" /> ");
         
         if ($("#images").children("img").length === 0)
         {
