@@ -1,0 +1,14 @@
+/**
+  Main.css
+  
+  Main css template for Image Viewer
+**/
+
+.AMIImg {
+  width:500px;
+  height:300px;
+}
+
+.AMIImgCurrent {
+  border: 10px solid black;
+}
