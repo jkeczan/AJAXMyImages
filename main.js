@@ -1,3 +1,5 @@
+var image_timer;
+
 function animateNext () {
               $("#images img.current").hide('slow',function(e) {
                 next.addClass("current").show('slow');
@@ -12,11 +14,17 @@ function animateNext () {
               next.addClass("current");
               current.removeClass("current");  
           }
+function nextImage () {
+  window.clearInterval(image_timer);
+  animateNext();
+  window.setInterval(animateNext, 7000)
+}
       
       jQuery.fn.AMIinit = function() {
         
-        var prev = $("#controls").append("<input id=\"prev\" name=\"prev\" class=\"AMINext\" type=\"button\" value=\"<<\" /> ");
-        var next = $("#controls").append("<input id=\"next\" name=\"next\" class=\"AMIPrev\" type=\"button\" value=\">>\" /> ");
+        var prev = $("#controls").append("<input id=\"prev\" name=\"prev\" class=\"AMIPrev\" type=\"button\" value=\"<<\"  /> ");
+        var next = $("#controls").append("<input id=\"next\" name=\"next\" class=\"AMINext\" type=\"button\" value=\">>\" onclick=\"nextImage();\" /> ");
+        //var image_timer;
         
         if ($("#images").children("img").length === 0)
         {
@@ -31,7 +39,7 @@ function animateNext () {
           
           $("#images img:first").addClass("current").show();
           
-          window.setInterval(animateNext, 7000)
+          image_timer = window.setInterval(animateNext, 7000);
           //$("#images a img").show();
         }
       }
