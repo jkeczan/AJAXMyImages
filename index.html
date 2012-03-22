@@ -1,14 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html><head>
   
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>AJAXMyImages</title>
-
+  <title>Image Viewer</title>
+  <style>
+    .AMIImg {
+      width:500px;
+      height:300px;
+    }
+    
+    .AMIImgCurrent {
+      border: 10px solid black;
+    }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>  
+  <script type="text/javascript">
+  	$(document).ready(function(e) {
+  	  function animateNext () {
+              $("#images img.current").hide('slow',function(e) {
+                next.addClass("current").show('slow');
+              } );
+              var current = $("#images img.current");
+              var next = current.next();
+              // alert(next.id);
+              if (next.length === 0)
+              {
+                next = $("#images img:first");
+              }
+              next.addClass("current");
+              current.removeClass("current");  
+          }
+  	  
+  		jQuery.fn.AMIinit = function() {
+  		  
+  		  var prev = $("#controls").append("<input id=\"prev\" name=\"prev\" type=\"button\" value=\"<<\" /> ");
+  		  var next = $("#controls").append("<input id=\"next\" name=\"next\" type=\"button\" value=\">>\" /> ");
+  		  
+  			if ($("#images").children("img").length === 0)
+  			{
+  				alert('no images')
+  			}	
+  			else
+  			{
+  			  $("#images img").hide();
+  			  
+  	      $("#images img").removeAttr("class");
+  	      $("#images img").addClass("AMIImg");
+  	      
+  	      $("#images img:first").addClass("current").show();
+  	      
+  	      window.setInterval(animateNext, 7000)
+  	      //$("#images a img").show();
+  			}
+  		}
+  		
+  		jQuery.fn.AMIImageViewer = function () {
+  		  $(document).AMIinit();
+  		}
+  		
+  		$(document).AMIImageViewer();
+  		
+  	});
+  	
+  	
+  </script>
   
-</head><body> 
+</head>
+<body> 
 <br>
 	This is the index file AJAX My Images
 <br>
+
+	<div id="container" style="width:500px; height:350px; border:1px solid black;">
+		<div id="images" style="width:500px; height:300px; border:1px solid red;" >
+			<img src="/home/jkeczan/Pictures/backgrounds/bk1.jpg" class="AMITest" />
+			<img src="/home/jkeczan/Pictures/backgrounds/bk2.jpg" class="AMITest" />
+			<img src="/home/jkeczan/Pictures/backgrounds/bk3.jpg" class="AMITest" />
+		</div>
+		<div id="controls" style="width:500px; height:50px; border:1px solid blue;">
+			
+		</div>
+		
+	</div>
 
 <br>
 </body></html>
